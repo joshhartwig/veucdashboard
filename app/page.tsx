@@ -29,10 +29,20 @@ export default function Home() {
   }, [])
 
   return (
-   <div className="flex min-h-screen">
-    <aside className="w-1/4 p-6 bg-gray-800 text-white">
-    <nav>
-      <ul>
+    <div className="min-h-screen flex flex-col">
+    <header className="flex justify-between items-center p-4 bg-white shadow-md">
+      <div className="flex items-center">
+        <img src="/path-to-your-logo.png" alt="Logo" className="h-8 w-auto mr-4" />
+        <span className="text-xl font-bold">Virtaul Request Portal</span>
+      </div>
+      <nav>
+        <a href="/admin" className="text-blue-500 hover:underline">Administration</a>
+      </nav>
+    </header>
+    <div className="flex flex-grow">
+      <aside className="w-1/5 p-6 bg-gray-800 text-white">
+        <nav>
+          <ul>
             <li className="mb-4">
               <a href="/pending-requests" className="text-blue-400 hover:underline">Pending Requests</a>
             </li>
@@ -42,23 +52,40 @@ export default function Home() {
             <li className="mb-4">
               <a href="/manage" className="text-blue-400 hover:underline">Manage</a>
             </li>
-        </ul>
-    </nav>
-    </aside>
-
-    <main className="w-3/4 p-6">
+          </ul>
+        </nav>
+      </aside>
+      <main className="w-3/4 p-6">
         <h1 className="text-3xl font-bold mb-6">My Products</h1>
-        
+
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">WorkSpaces</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.workspaces.map((workspace) => (
-              <div key={workspace.WorkspaceId} className="border p-4">
+              <div key={workspace.WorkspaceId} className="border p-4 rounded-lg shadow">
                 <h3 className="text-lg font-medium">{workspace.UserName}</h3>
                 <p className="text-sm text-gray-600">{workspace.State}</p>
                 <button
                   className="bg-blue-500 text-white p-2 mt-2 rounded"
                   onClick={() => launchWorkspace(workspace.WorkspaceId)}
+                >
+                  Launch
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">WorkSpaces Web</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.workspacesWeb.map((workspaceWeb) => (
+              <div key={workspaceWeb.WorkspaceId} className="border p-4 rounded-lg shadow">
+                <h3 className="text-lg font-medium">{workspaceWeb.UserName}</h3>
+                <p className="text-sm text-gray-600">{workspaceWeb.State}</p>
+                <button
+                  className="bg-blue-500 text-white p-2 mt-2 rounded"
+                  onClick={() => launchWorkspaceWeb(workspaceWeb.WorkspaceId)}
                 >
                   Launch
                 </button>
@@ -84,26 +111,9 @@ export default function Home() {
             ))}
           </div>
         </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">AppStream</h2>
-          <div className="grid grid-cols-3 gap-4">
-            {products.appstream.map((fleet) => (
-              <div key={fleet.Name} className="border p-4">
-                <h3 className="text-lg">{fleet.Name}</h3>
-                <p>{fleet.State}</p>
-                <button
-                  className="bg-blue-500 text-white p-2 mt-2"
-                  onClick={() => launchAppStream(fleet.Name)}
-                >
-                  Launch
-                </button>
-              </div>
-            ))}
-          </div>
-        </section>
       </main>
-   </div>
+    </div>
+  </div>
   );
 }
 
