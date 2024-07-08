@@ -6,7 +6,9 @@ AWS.config.update({
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
-const workspaces = new AWS.WorkSpaces()
 
-export default { workspaces }
+const workspaces = new AWS.WorkSpaces()
+const appstream = new AWS.AppStream()
+
+export { workspaces, appstream }
 
