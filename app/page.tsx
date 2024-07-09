@@ -94,7 +94,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
     <header className="flex justify-between items-center p-4 bg-white shadow-md">
       <div className="flex items-center">
-        <img src="bank_logo.png" alt="Logo" className="h-20 w-auto mr-4" />
+        {/* <img src="vm.png" alt="Logo" className="h-20 w-auto mr-4" /> */}
         <span className="text-xl font-bold">Virtual Request Portal</span>
       </div>
       <nav>
@@ -124,23 +124,20 @@ export default function Home() {
             <h2 className="text-2xl font-semibold mb-4">WorkSpaces</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.workspaces.map((workspace) => (
-                <div key={workspace.WorkspaceId} className="border p-4 rounded-lg shadow">
-                  <div className="flex items-center">
-                    <h3 className="text-lg font-medium">username: {workspace.UserName.toLocaleLowerCase()}</h3>
-                    {getLogoSrc(workspace.WorkspaceProperties.OperatingSystemName) && (
-                      <img
-                        src={getLogoSrc(workspace.WorkspaceProperties.OperatingSystemName)}
-                        alt="OS Logo"
-                        className="h-8 w-8 ml-2"
-                      />
-                    )}
-                  </div>
-                  <p className="text-sm text-gray-600">state: {workspace.State.toLocaleLowerCase()}</p>
-                  <p className="text-sm text-gray-600">ip: {workspace.IpAddress}</p>
-                  <p className="text-sm text-gray-600">os: {workspace.WorkspaceProperties.OperatingSystemName.toLocaleLowerCase()}</p>
+                <div key={workspace.WorkspaceId} className="border p-4 rounded-lg shadow flex flex-col items-center">
+                  {getLogoSrc(workspace.WorkspaceProperties.OperatingSystemName) && (
+                    <img
+                      src={getLogoSrc(workspace.WorkspaceProperties.OperatingSystemName)}
+                      alt="OS Logo"
+                      className="h-14 w-15 mb-4"
+                    />
+                  )}
+                  <p className="text-sm text-gray-600">Operating System: {workspace.WorkspaceProperties.OperatingSystemName}</p>
+                  <p className="text-sm text-gray-600">State: {workspace.State}</p>
+                  <p className="text-sm text-gray-600">IP Address: {workspace.IpAddress}</p>
                   <button
-                    className="bg-blue-500 text-white p-2 mt-2 rounded"
-                    onClick={() => launchWorkspace(workspace.WorkspaceId)}
+                    className="bg-blue-500 text-white p-2 mt-4 rounded"
+                    onClick={() => launchWorkspaces(workspace.WorkspaceId)}
                   >
                     Launch
                   </button>
@@ -153,22 +150,20 @@ export default function Home() {
             <h2 className="text-2xl font-semibold mb-4">WorkSpaces Web</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.workspacesWeb.map((workspaceWeb) => (
-                <div key={workspaceWeb.WorkspaceId} className="border p-4 rounded-lg shadow">
-                  <div className="flex items-center">
-                    <h3 className="text-lg font-medium">{workspaceWeb.UserName}</h3>
-                    {/* {getLogoSrc(workspaceWeb.WorkspaceProperties.OperatingSystemName) && (
-                      <img
-                        src={getLogoSrc(workspacesWeb.WorkspaceProperties.OperatingSystemName)}
-                        alt="OS Logo"
-                        className="h-6 w-6 ml-2"
-                      />
-                    )} */}
-                  </div>
+                <div key={workspaceWeb.WorkspaceId} className="border p-4 rounded-lg shadow flex flex-col items-center">
+                  {/* {getLogoSrc(workspaceWeb.WorkspaceProperties.OperatingSystemName) && (
+                    <img
+                      src={getLogoSrc(workspaceWeb.WorkspaceProperties.OperatingSystemName)}
+                      alt="OS Logo"
+                      className="h-16 w-16 mb-4"
+                    />
+                  )} */}
+                  <h3 className="text-lg font-medium">{workspaceWeb.UserName}</h3>
+                  <p className="text-sm text-gray-600">Operating System: {workspaceWeb.WorkspaceProperties.OperatingSystemName}</p>
                   <p className="text-sm text-gray-600">State: {workspaceWeb.State}</p>
                   <p className="text-sm text-gray-600">IP Address: {workspaceWeb.IpAddress}</p>
-                  <p className="text-sm text-gray-600">OS: {workspaceWeb.WorkspaceProperties.OperatingSystemName}</p>
                   <button
-                    className="bg-blue-500 text-white p-2 mt-2 rounded"
+                    className="bg-blue-500 text-white p-2 mt-4 rounded"
                     onClick={() => launchWorkspacesWeb(workspaceWeb.WorkspaceId)}
                   >
                     Launch
@@ -182,20 +177,19 @@ export default function Home() {
             <h2 className="text-2xl font-semibold mb-4">AppStream</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.appstream.map((fleet) => (
-                <div key={fleet.Name} className="border p-4 rounded-lg shadow">
-                  <div className="flex items-center">
-                    <h3 className="text-lg font-medium">{fleet.Name}</h3>
-                    {getLogoSrc(fleet.InstanceType) && (
-                      <img
-                        src={getLogoSrc(fleet.InstanceType)}
-                        alt="OS Logo"
-                        className="h-8 w-8 ml-2"
-                      />
-                    )}
-                  </div>
+                <div key={fleet.Name} className="border p-4 rounded-lg shadow flex flex-col items-center">
+                  <h3 className="text-lg font-medium">{fleet.Name}</h3>
+                  {/* Assuming you also want to display the OS logo for AppStream, you can adjust based on actual data */}
+                  {getLogoSrc(fleet.InstanceType) && (
+                    <img
+                      src={getLogoSrc(fleet.InstanceType)}
+                      alt="OS Logo"
+                      className="h-16 w-16 mb-4"
+                    />
+                  )}
                   <p className="text-sm text-gray-600">State: {fleet.State}</p>
                   <button
-                    className="bg-blue-500 text-white p-2 mt-2 rounded"
+                    className="bg-blue-500 text-white p-2 mt-4 rounded"
                     onClick={() => launchAppStream(fleet.Name)}
                   >
                     Launch
