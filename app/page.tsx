@@ -90,15 +90,17 @@ export default function Home() {
     }
   };
 
+  const regCode = process.env.AWS_WORKSPACES_REGCODE
+
   return (
     <div className="min-h-screen flex flex-col">
-    <header className="flex justify-between items-center p-4 bg-white shadow-md">
+    <header className="flex justify-between items-center p-4 bg-blue-900 shadow-md">
       <div className="flex items-center">
-        {/* <img src="vm.png" alt="Logo" className="h-20 w-auto mr-4" /> */}
-        <span className="text-xl font-bold">Virtual Request Portal</span>
+        {/* <img src="/path-to-your-logo.png" alt="Logo" className="h-8 w-auto mr-4" /> */}
+        <span className="text-xl font-bold text-white">Virtual Request Portal</span>
       </div>
       <nav>
-        <a href="/admin" className="text-blue-500 hover:underline">Administration</a>
+        <a href="/admin" className="text-white hover:underline">Administration</a>
       </nav>
     </header>
     <div className="flex flex-grow">
@@ -205,7 +207,8 @@ export default function Home() {
 }
 
 const launchWorkspaces = (workspaceId: string) => {
-  window.open(`https://client.workspaces.aws/web/${workspaceId}`, '_blank')
+  window.open(`https://us-east-1.webclient.amazonworkspaces.com/${workspaceId}`, '_blank')
+  //https://us-east-1.webclient.amazonworkspaces.com/
 }
 
 const launchWorkspacesWeb = (workspaceId: string) => {
