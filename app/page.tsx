@@ -90,7 +90,6 @@ export default function Home() {
     }
   };
 
-  const regCode = process.env.AWS_WORKSPACES_REGCODE
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -108,13 +107,7 @@ export default function Home() {
         <nav>
           <ul>
             <li className="mb-4">
-              <a href="/pending-requests" className="text-blue-400 hover:underline">Pending Requests</a>
-            </li>
-            <li className="mb-4">
-              <a href="/new-requests" className="text-blue-400 hover:underline">New Requests</a>
-            </li>
-            <li className="mb-4">
-              <a href="/manage" className="text-blue-400 hover:underline">Manage</a>
+              <a href="/manage" className="text-blue-400 hover:underline">Manage Products</a>
             </li>
           </ul>
         </nav>
