@@ -116,7 +116,7 @@ export default function Home() {
         <h1 className="text-3xl font-bold mb-6">My Products</h1>
 
         <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">WorkSpaces</h2>
+            <h2 className="text-2xl font-semibold mb-4">Cloud Desktop</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.workspaces.map((workspace) => (
                 <div key={workspace.WorkspaceId} className="border p-4 rounded-lg shadow flex flex-col items-center">
@@ -127,7 +127,7 @@ export default function Home() {
                       className="h-14 w-15 mb-4"
                     />
                   )}
-                  <p className="text-sm text-gray-600">Operating System: {workspace.WorkspaceProperties.OperatingSystemName}</p>
+                  <p className="text-sm text-gray-600">OS: {workspace.WorkspaceProperties.OperatingSystemName}</p>
                   <p className="text-sm text-gray-600">State: {workspace.State}</p>
                   <p className="text-sm text-gray-600">IP Address: {workspace.IpAddress}</p>
                   <button
@@ -142,34 +142,12 @@ export default function Home() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">WorkSpaces Web</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.workspacesWeb.map((workspaceWeb) => (
-                <div key={workspaceWeb.WorkspaceId} className="border p-4 rounded-lg shadow flex flex-col items-center">
-                  {/* {getLogoSrc(workspaceWeb.WorkspaceProperties.OperatingSystemName) && (
-                    <img
-                      src={getLogoSrc(workspaceWeb.WorkspaceProperties.OperatingSystemName)}
-                      alt="OS Logo"
-                      className="h-16 w-16 mb-4"
-                    />
-                  )} */}
-                  <h3 className="text-lg font-medium">{workspaceWeb.UserName}</h3>
-                  <p className="text-sm text-gray-600">Operating System: {workspaceWeb.WorkspaceProperties.OperatingSystemName}</p>
-                  <p className="text-sm text-gray-600">State: {workspaceWeb.State}</p>
-                  <p className="text-sm text-gray-600">IP Address: {workspaceWeb.IpAddress}</p>
-                  <button
-                    className="bg-blue-500 text-white p-2 mt-4 rounded"
-                    onClick={() => launchWorkspacesWeb(workspaceWeb.WorkspaceId)}
-                  >
-                    Launch
-                  </button>
-                </div>
-              ))}
-            </div>
+            <h2 className="text-2xl font-semibold mb-4">Cloud Browser</h2>
+            
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">AppStream</h2>
+            <h2 className="text-2xl font-semibold mb-4">Cloud Apps</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.appstream.map((fleet) => (
                 <div key={fleet.Name} className="border p-4 rounded-lg shadow flex flex-col items-center">
