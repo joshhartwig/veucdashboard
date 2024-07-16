@@ -86,7 +86,7 @@ export default function Home() {
     } else if (osName.toLowerCase().includes('linux') || osName.toLowerCase().includes('ubuntu')) {
       return '/linux.png';
     } else {
-      return null;
+      return './vscode.png'; // lol :()
     }
   };
 
@@ -187,5 +187,5 @@ const launchWorkspacesWeb = (workspaceId: string) => {
 }
 
 const launchAppStream = (fleetName: string) => {
-  window.open(`https://appstream2.aws.amazon.com/fleets/${fleetName}`, '_blank')
+  window.open(`https://appstream2.us-east-1.aws.amazon.com/authenticate?parameters=eyJ0eXBlIjoiRU5EX1VTRVIiLCJleHBpcmVzIjoiMTcyMTEzNTQ0OSIsImF3c0FjY291bnRJZCI6IjQ3MTExMjcyNDQ2MCIsInVzZXJJZCI6InRoZWpvc2hoYXJ0d2lnQGdtYWlsLmNvbSIsImNhdGFsb2dTb3VyY2UiOiJzdGFjay92c2NvZGVfc3RhY2siLCJmbGVldFJlZiI6ImZsZWV0L3ZzY29kZV9mbGVldCIsImFwcGxpY2F0aW9uSWQiOiIiLCJ1c2VyQ29udGV4dCI6IiIsIm1heFVzZXJEdXJhdGlvbkluU2VjcyI6IjU3NjAwIn0%3D&signature=p%2Bx%2BiviGq6KubtWndICXvaiHDjt9lDbtuzJENNz3Z%2Fo%3D`, '_blank')
 }
