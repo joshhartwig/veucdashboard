@@ -142,8 +142,29 @@ export default function Home() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">Cloud Browser</h2>
-            
+            <h2 className="text-2xl font-semibold mb-4">CodeSpaces</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {products.appstream.map((fleet) => (
+                <div key={fleet.Name} className="border p-4 rounded-lg shadow flex flex-col items-center">
+                  <h3 className="text-lg font-medium">{"React Project"}</h3>
+                  {/* Assuming you also want to display the OS logo for AppStream, you can adjust based on actual data */}
+                  {getLogoSrc(fleet.InstanceType) && (
+                    <img
+                      src={"./codespace.png"}
+                      alt="OS Logo"
+                      className="h-30 w-30 mb-4"
+                    />
+                  )}
+                  <p className="text-sm text-gray-600">State: {fleet.State}</p>
+                  <button
+                    className="bg-blue-500 text-white p-2 mt-4 rounded"
+                    onClick={() => launchCodeSpace()}
+                  >
+                    Launch
+                  </button>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="mb-8">
@@ -171,6 +192,59 @@ export default function Home() {
               ))}
             </div>
           </section>
+          
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">Cloud Browser</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {products.appstream.map((fleet) => (
+                <div key={fleet.Name} className="border p-4 rounded-lg shadow flex flex-col items-center">
+                  <h3 className="text-lg font-medium">{"Google Chrome"}</h3>
+                  {/* Assuming you also want to display the OS logo for AppStream, you can adjust based on actual data */}
+                  {getLogoSrc(fleet.InstanceType) && (
+                    <img
+                      src={"./chrome.png"}
+                      alt="OS Logo"
+                      className="h-16 w-16 mb-4"
+                    />
+                  )}
+                  <p className="text-sm text-gray-600">State: {fleet.State}</p>
+                  <button
+                    className="bg-blue-500 text-white p-2 mt-4 rounded"
+                    onClick={() => launchAppStream(fleet.Name)}
+                  >
+                    Launch
+                  </button>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">CodeSpaces</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {products.appstream.map((fleet) => (
+                <div key={fleet.Name} className="border p-4 rounded-lg shadow flex flex-col items-center">
+                  <h3 className="text-lg font-medium">{"React Project"}</h3>
+                  {/* Assuming you also want to display the OS logo for AppStream, you can adjust based on actual data */}
+                  {getLogoSrc(fleet.InstanceType) && (
+                    <img
+                      src={"./codespace.png"}
+                      alt="OS Logo"
+                      className="h-30 w-30 mb-4"
+                    />
+                  )}
+                  <p className="text-sm text-gray-600">State: {fleet.State}</p>
+                  <button
+                    className="bg-blue-500 text-white p-2 mt-4 rounded"
+                    onClick={() => launchCodeSpace()}
+                  >
+                    Launch
+                  </button>
+                </div>
+              ))}
+            </div>
+          </section>
+
       </main>
     </div>
   </div>
@@ -187,5 +261,9 @@ const launchWorkspacesWeb = (workspaceId: string) => {
 }
 
 const launchAppStream = (fleetName: string) => {
-  window.open(`https://appstream2.us-east-1.aws.amazon.com/authenticate?parameters=eyJ0eXBlIjoiRU5EX1VTRVIiLCJleHBpcmVzIjoiMTcyMTkyMzIxNSIsImF3c0FjY291bnRJZCI6IjQ3MTExMjcyNDQ2MCIsInVzZXJJZCI6InRoZWpvc2hoYXJ0d2lnQGdtYWlsLmNvbSIsImNhdGFsb2dTb3VyY2UiOiJzdGFjay92c2NvZGVfc3RhY2siLCJmbGVldFJlZiI6ImZsZWV0L3ZzY29kZV9mbGVldCIsImFwcGxpY2F0aW9uSWQiOiIiLCJ1c2VyQ29udGV4dCI6IiIsIm1heFVzZXJEdXJhdGlvbkluU2VjcyI6IjU3NjAwIn0%3D&signature=J5KQvcThVOlxMo%2BDtdKA8fKSHO7aIyP%2BwAlx05VbuDU%3D`, '_blank')
+  window.open(`https://appstream2.us-east-1.aws.amazon.com/authenticate?parameters=eyJ0eXBlIjoiRU5EX1VTRVIiLCJleHBpcmVzIjoiMTcyMzEzMDIyNyIsImF3c0FjY291bnRJZCI6IjQ3MTExMjcyNDQ2MCIsInVzZXJJZCI6InRoZWpvc2hoYXJ0d2lnQGdtYWlsLmNvbSIsImNhdGFsb2dTb3VyY2UiOiJzdGFjay92c2NvZGVfc3RhY2siLCJmbGVldFJlZiI6ImZsZWV0L3ZzY29kZV9mbGVldCIsImFwcGxpY2F0aW9uSWQiOiIiLCJ1c2VyQ29udGV4dCI6IiIsIm1heFVzZXJEdXJhdGlvbkluU2VjcyI6IjU3NjAwIn0%3D&signature=cvUVPPUnBCZATmVr5Zm9sA2L4gdyXxi1dxNSvtGzdrU%3D`, '_blank')
+}
+
+const launchCodeSpace = () => {
+  window.open(`https://stunning-guide-jq7w597vjj2j6qr.github.dev`)
 }
