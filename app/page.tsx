@@ -55,6 +55,23 @@ type Products = {
 };
 
 export default function Home() {
+  const codeSpaces = [
+    {
+      id: 'codespace-1',
+      type: 'React CodeSpace',
+      description: 'A CodeSpace for React development',
+    },
+    {
+      id: 'codespace-2',
+      type: 'Python CodeSpace',
+      description: 'A CodeSpace for Python development',
+    },
+    {
+      id: 'codespace-3',
+      type: 'Node.js CodeSpace',
+      description: 'A CodeSpace for Node.js development',
+    },
+  ];
 
   const [products, setProducts] = useState<Products>({
     workspaces: [],
@@ -144,18 +161,18 @@ export default function Home() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">CodeSpaces</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.appstream.map((fleet) => (
-                <div key={fleet.Name} className="border p-4 rounded-lg shadow flex flex-col items-center">
-                  <h3 className="text-lg font-medium">{"React Project"}</h3>
+              {codeSpaces.map((cp) => (
+                <div key={cp.id} className="border p-4 rounded-lg shadow flex flex-col items-center">
+                  <h3 className="text-lg font-medium">{cp.type}</h3>
                   {/* Assuming you also want to display the OS logo for AppStream, you can adjust based on actual data */}
-                  {getLogoSrc(fleet.InstanceType) && (
+                  {getLogoSrc(cp.description) && (
                     <img
                       src={"./codespace.png"}
                       alt="OS Logo"
                       className="h-30 w-30 mb-4"
                     />
                   )}
-                  <p className="text-sm text-gray-600">State: {fleet.State}</p>
+                  <p className="text-sm text-gray-600"></p>
                   <button
                     className="bg-blue-500 text-white p-2 mt-4 rounded"
                     onClick={() => launchCodeSpace()}
@@ -219,31 +236,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">CodeSpaces</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.appstream.map((fleet) => (
-                <div key={fleet.Name} className="border p-4 rounded-lg shadow flex flex-col items-center">
-                  <h3 className="text-lg font-medium">{"React Project"}</h3>
-                  {/* Assuming you also want to display the OS logo for AppStream, you can adjust based on actual data */}
-                  {getLogoSrc(fleet.InstanceType) && (
-                    <img
-                      src={"./codespace.png"}
-                      alt="OS Logo"
-                      className="h-30 w-30 mb-4"
-                    />
-                  )}
-                  <p className="text-sm text-gray-600">State: {fleet.State}</p>
-                  <button
-                    className="bg-blue-500 text-white p-2 mt-4 rounded"
-                    onClick={() => launchCodeSpace()}
-                  >
-                    Launch
-                  </button>
-                </div>
-              ))}
-            </div>
-          </section>
+          
 
       </main>
     </div>
